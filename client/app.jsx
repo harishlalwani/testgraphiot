@@ -9,7 +9,7 @@ var socket = io.connect();
 var MyComponent = React.createClass({
 	render() {
 		return(
-			<PieChart data={this.props.data} options={this.props.data} redraw/>
+			<PieChart data={this.props.data} options={this.props.data} width="600" height="250" redraw/>
 		);
 	}
 });
