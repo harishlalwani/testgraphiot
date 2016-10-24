@@ -16,7 +16,7 @@ var PieChart = require("react-chartjs").Pie;
 /* Configuration */
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
-app.set('port', 3000);
+app.set('port', process.env.PORT || 5000);
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
