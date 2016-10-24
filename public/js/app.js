@@ -11,7 +11,7 @@ var MyComponent = React.createClass({
   displayName: 'MyComponent',
 
   render: function render() {
-    return React.createElement(PieChart, { data: this.props.data, options: this.props.data, redraw: true });
+    return React.createElement(PieChart, { data: this.props.data, options: this.props.data, width: '600', height: '250', redraw: true });
   }
 });
 
@@ -48,7 +48,6 @@ var GraphApp = React.createClass({
   },
 
   componentDidMount: function componentDidMount() {
-    //socket.on('init', this._initialize);
     socket.on('change:graph', this._graphChanged);
   },
 
