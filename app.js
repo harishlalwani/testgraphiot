@@ -38,4 +38,8 @@ app.post('/randgraph', function(req, res) {
   return {"status":1};
 });
 
+app.get('/randgraph', function(req, res) {
+  return {"status":1};
+});
+
 module.exports = app;
