@@ -14,4 +14,4 @@ Then run the app like so:
 
     npm start
 
-And navigate to `localhost:3000` and chat !
+And navigate to `localhost:5000` and chat !
