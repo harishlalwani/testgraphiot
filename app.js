@@ -34,13 +34,8 @@ server.listen(app.get('port'), function (){
 });
 
 app.post('/randgraph', function(req, res) {
-	console.log(req.body);
   io.emit('change:graph',req.body.no); 
-});
-
-app.get('/randgraph', function(req, res) {
-	console.log(req.body);
-  io.emit('change:graph',req.body.no); 
+  return {"status":1};
 });
 
 module.exports = app;
