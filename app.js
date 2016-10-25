@@ -33,13 +33,9 @@ server.listen(app.get('port'), function (){
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
-app.post('/randgraph', function(req, res) {
+app.post('/randgraph/', function(req, res) {
   io.emit('change:graph',req.body.no); 
-  return {"status":1};
-});
-
-app.get('/randgraph', function(req, res) {
-  return {"status":1};
+  res.json({status:1});
 });
 
 module.exports = app;
