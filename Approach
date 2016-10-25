@@ -1,0 +1,11 @@
+1. For the first task of IOT device.
+	I thought of an android device which will send data to server.
+	There will be a button in view when clicking on that a Async function in MainActivity will get triggered.
+
+
+2. For the second task I thought of an node server which will send data to the client as soon as it receives data from IOT device.
+
+3. For the third task the client side
+	I worked on React chat application and converted it to logging graph in real time on basis of data received from the server.
+	
+
