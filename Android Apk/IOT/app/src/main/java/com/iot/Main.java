@@ -7,21 +7,16 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import android.view.View;
 import android.widget.Toast;
 
-import java.io.IOException;
+import java.io.BufferedReader;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,7 +38,7 @@ public class Main extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             try{
 
-                HttpClient httpclient = new DefaultHttpClient();
+                /*HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost("https://testgraphiot.herokuapp.com/randgraph/");
 
                 try {
@@ -63,7 +58,37 @@ public class Main extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
+                }*/
+
+                Random r = new Random();
+                int i1 = r.nextInt(80 - 65) + 100;
+
+                String link="https://testgraphiot.herokuapp.com/randgraph/";
+                String data  = URLEncoder.encode("no", "UTF-8") + "=" + URLEncoder.encode(i1+"", "UTF-8");
+
+
+                URL url = new URL(link);
+                URLConnection conn = url.openConnection();
+
+                conn.setDoOutput(true);
+                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+
+                wr.write( data );
+                wr.flush();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                // Read Server Response
+                while((line = reader.readLine()) != null)
+                {
+                    sb.append(line);
+                    break;
                 }
+
+                Log.d("Loggs:",sb.toString() );
+
             }
             catch(Exception e){ Log.e("Error", e.toString()); }
             return null;
